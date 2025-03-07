@@ -10,34 +10,23 @@ if p==0:
     print(x+" is not a prime")
 else: print("May be prime to be tested")"""
 
-# Function to get results based on exam numbers
-def get_results(exam_numbers):
+# Function to calculate and return results
+def student_results(student_scores):
     results = []
-    for number in exam_numbers:
-        if number >= 50:
-            results.append("Pass")
+    for index, score in enumerate(student_scores):
+        if score >= 50:  # Assuming 50 is the passing mark
+            results.append(f"Student {index + 1}: Pass")
         else:
-            results.append("Fail")
+            results.append(f"Student {index + 1}: Fail")
     return results
 
-# Main code
-exam_numbers = []
+# Input scores for 3 students
+scores = []
 for i in range(3):
-    while True:
-        try:
-            number = int(input(f"Enter the exam number for student {i+1}: "))
-            if 0 <= number <= 100:
-                exam_numbers.append(number)
-                break
-            else:
-                print("Please enter a number between 0 and 100.")
-        except ValueError:
-            print("Invalid input. Please enter a valid number.")
+    score = float(input(f"Enter the marks for Student {i + 1}: "))
+    scores.append(score)
 
-results = get_results(exam_numbers)
-
-# Display results
-for i, result in enumerate(results):
-    print(f"Student {i+1} result: {result}")
-
-
+# Get and display results
+results = student_results(scores)
+for result in results:
+    print(result)
